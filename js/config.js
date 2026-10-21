@@ -4,6 +4,7 @@ export const CONFIG = {
   tmdbBaseUrl: 'https://api.themoviedb.org/3',
   imageBaseUrl: 'https://image.tmdb.org/t/p',
   language: 'pt-BR',
+  matricula: '465582',
   imageSizes: { poster: 'w500', backdrop: 'w1280', profile: 'w185' }
 };
 

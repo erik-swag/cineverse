@@ -1,6 +1,7 @@
 import { renderHome, renderSearch, retryLastRequest } from './app.js';
 import { renderMovie } from './movie.js';
 import { renderPerson } from './person.js';
+import './logs-ui.js';
 
 const root = document.querySelector('#app');
 const headerTrigger = document.querySelector('#header-search-trigger');

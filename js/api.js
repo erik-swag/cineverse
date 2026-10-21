@@ -1,4 +1,5 @@
 import { CONFIG, hasApiKey, loadRuntimeConfig } from './config.js';
+import { registerLog } from './logs.js';
 
 function buildUrl(path, params = {}) {
   const url = new URL(`${CONFIG.tmdbBaseUrl}${path}`);
@@ -8,6 +9,19 @@ function buildUrl(path, params = {}) {
     if (value !== undefined && value !== null && String(value).trim() !== '') url.searchParams.set(key, value);
   });
   return url;
+}
+
+// Resume o retorno da API num texto curto para o log.
+function summarize(payload) {
+  if (Array.isArray(payload?.results)) return `${payload.results.length} resultados de ${payload.total_results ?? '?'}`;
+  if (Array.isArray(payload?.genres)) return `${payload.genres.length} géneros`;
+  if (Array.isArray(payload?.cast)) return `${payload.cast.length} integrantes no elenco`;
+  return payload?.title || payload?.name || 'OK';
+}
+
+// Funcionalidade 1: após receber os dados do TMDB, grava o log (sem bloquear a interface).
+function logRequest(path, payload) {
+  registerLog('TMDB', path.replace(/^\//, ''), summarize(payload));
 }
 
 async function request(path, params = {}) {
@@ -33,6 +47,7 @@ async function request(path, params = {}) {
     error.code = response.status === 401 ? 'AUTH' : response.status === 404 ? 'NOT_FOUND' : 'HTTP';
     throw error;
   }
+  logRequest(path, payload);
   return payload;
 }
 
