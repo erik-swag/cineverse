@@ -1,14 +1,47 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CineVerse</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e0f12" />
+  <meta name="description" content="CineVerse — descubra filmes, elencos e histórias reais do cinema." />
+  <title>CineVerse — Descubra o próximo filme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-  <h1>CineVerse</h1>
-  <p>Projeto acadêmico em desenvolvimento.</p>
-  <p>Catálogo de filmes, atores e personagens.</p>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#/" aria-label="CineVerse, página inicial">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="brand-name">Cine<span>Verse</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#/" data-nav="home">Em cartaz</a>
+      <a href="#/search" data-nav="search">Explorar</a>
+      <a href="#/about" data-nav="about">O projeto</a>
+    </nav>
+    <button class="header-search-trigger" id="header-search-trigger" type="button" aria-label="Abrir pesquisa"><span></span> Pesquisar</button>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <div class="page-loading" role="status" aria-live="polite"><span class="spinner"></span><span>A preparar a próxima sessão...</span></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <a class="brand brand-footer" href="#/" aria-label="CineVerse, página inicial"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-name">Cine<span>Verse</span></span></a>
+      <p>Histórias que ficam. Pessoas que as tornam possíveis.</p>
+      <a class="back-top" href="#/" aria-label="Voltar ao início">↑</a>
+    </div>
+    <div class="footer-bottom">
+      <div><strong>Desenvolvido por: [NOME COMPLETO DO ALUNO]</strong><span>Disciplina: Fundamentos ao Desenvolvimento Web — Sistemas de Informação — Unoesc</span></div>
+      <div class="tmdb-credit"><span class="tmdb-wordmark">TMDB</span><span>Este produto utiliza a API do TMDB, mas não é endossado nem certificado pelo TMDB.</span></div>
+    </div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>
